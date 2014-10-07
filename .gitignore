@@ -1,0 +1,12 @@
+$ cat .gitignore
+*.ncb
+*.suo
+*.sdf
+*.opensdf
+Debug/
+Release/
+ipch/
+DebugElXDevice/
+Backup/
+*.user
+*~
