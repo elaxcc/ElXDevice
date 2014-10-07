@@ -32,10 +32,12 @@ bool ElXDevice::WriteData(unsigned char _FunctionCode, unsigned char* _OutData, 
 int ElXDevice::ReadData()
 {
 	int err = 0;
-	while(err == 0) {
-		int IncomeBytesCnt = read(DataBuffer);
+
+	int IncomeBytesCnt = read(DataBuffer);
+	if (IncomeBytesCnt > 0)
+	{
 		err = Parse(DataBuffer, IncomeBytesCnt);
-		if(err < 0)
+		if (err < 0)
 		{
 			ReInitParse();
 			return err;

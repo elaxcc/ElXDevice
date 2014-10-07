@@ -2,6 +2,11 @@
 
 #include "ElXDevice.h"
 
+int func_1(unsigned char* DataBytes, int DataSize)
+{
+	return 0;
+}
+
 class test_class
 {
 public:
@@ -28,6 +33,7 @@ int main(int argc, char **argv)
 
 	device.SetSetting("COM5", 57600, 8, 0, 0);
 	device.AddFunction(0x01, boost::bind(&test_class::Function0, &test_c, _1, _2));
+	device.AddFunction(0x02, &func_1);
 	if (device.open() == 0)
 	{
 		std::cout << "Port is opened" << std::endl;
