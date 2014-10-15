@@ -3,10 +3,10 @@ $ cat .gitignore
 *.suo
 *.sdf
 *.opensdf
-Debug/
-Release/
+Debug*/
+Release*/
 ipch/
-DebugElXDevice/
 Backup/
 *.user
 *~
+.~*

@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <tchar.h>
 
+#include <stdio.h>
+#include <tchar.h>
+
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 

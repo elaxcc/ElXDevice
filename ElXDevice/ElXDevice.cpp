@@ -44,8 +44,6 @@ int ElXDevice::ReadData()
 		}
 	}
 
-	ReInitParse();
-
 	return 0;
 }
 
