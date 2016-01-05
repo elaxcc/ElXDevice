@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ElXDevice.h"
+#include "ElMcDevice.h"
 
 int func_1(unsigned char* DataBytes, int DataSize)
 {
@@ -28,7 +28,7 @@ private:
 
 int main(int argc, char **argv)
 {
-	ElXDevice device;
+	ElMcDevice device;
 	test_class test_c(4);
 
 	device.SetSetting("COM5", 57600, 8, 0, 0);

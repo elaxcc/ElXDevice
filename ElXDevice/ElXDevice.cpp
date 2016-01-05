@@ -4,22 +4,25 @@
 
 ElXDevice::ElXDevice() : ElSimpleWinComPort()
 {
-	DataBuffer = new unsigned char [512];
+	DataBuffer = new unsigned char[512];
 }
 
 ElXDevice::ElXDevice(int BufferSize) : ElSimpleWinComPort()
 {
-	DataBuffer = new unsigned char [BufferSize];
+	DataBuffer = new unsigned char[BufferSize];
 }
 
 ElXDevice::ElXDevice(std::string _PortName, int _BaudRate, int BufferSize) : ElSimpleWinComPort(_PortName, _BaudRate)
 {
-	DataBuffer = new unsigned char [BufferSize];
+	DataBuffer = new unsigned char[BufferSize];
 }
 
 ElXDevice::~ElXDevice()
 {
-	delete [] DataBuffer;
+	if (DataBuffer != NULL)
+	{
+		delete[] DataBuffer;
+	}
 }
 
 bool ElXDevice::WriteData(unsigned char _FunctionCode, unsigned char* _OutData, int _DataSize)
@@ -45,5 +48,14 @@ int ElXDevice::ReadData()
 	}
 
 	return 0;
+}
+
+void ElXDevice::ResizeBuffer(unsigned BufferSize)
+{
+	if (DataBuffer != NULL)
+	{
+		delete[] DataBuffer;
+	}
+	DataBuffer = new unsigned char[BufferSize];
 }
 

@@ -1,9 +1,8 @@
-#ifndef ELPROTOCOL_H
-#define ELPROTOCOL_H
+#ifndef ELMCDEVICE
+#define  ELMCDEVICE
 
-#include <String>
-#include "ElAbstractProtocol.h"
-#include "ElProtoProcessPacket.h"
+#include "ElXDevice.h"
+#include "ElSimpleWinComPort.h"
 
 // Parse flag bits:
 #define PARSE_FLAG_BC			1	// Byte counter flag
@@ -22,7 +21,8 @@
 #define PARSE_ERROR_PP			-4	// Error packet process 
 #define PARSE_ERROR_DS			-5	// Calibration DS3231 error
 
-class ElProtocol : public ElAbstractProtocol {
+class ElMcDevice : public ElXDevice
+{
 private:
 	unsigned char	ParseFlag;			// Parse flag
 	unsigned char	ParseError;			// Error byte
@@ -36,17 +36,18 @@ private:
 	unsigned char	*ParseBuf;			// Buffer for incoming data
 	unsigned short	ParsePtr;			// Pointer on the current byte in Data Buffer (ParseBuf)
 
-	ElProtoPacketProcessList FunctionsList;
-
 public:
-	ElProtocol();
-	~ElProtocol();
-	void AddFunction(unsigned int func_code, const ElProtoPacketProcessItem::CallBack &func);
-	void ReInitParse();
+	ElMcDevice();
+	ElMcDevice(int BufferSize);
+	ElMcDevice(std::string _PortName, int _BaudRate, int BufferSize = 512);
+	~ElMcDevice();
+
+	// ElAbstractProtocol
+	virtual void ReInitParse();
 	virtual int Parse(unsigned char *Data, int DataSize);
-	virtual int ProcessPacket();
 	virtual int CreatePacket(unsigned char FuncCode, unsigned char *Data, unsigned short DataSize, unsigned char *Buffer);
+
 	static int CalcCRC16(unsigned char *Data, unsigned short DataSize, unsigned short CurrentValCRC16);
 };
 
-#endif /*ELPROTOCOL_H*/
+#endif // ELMCDEVICE

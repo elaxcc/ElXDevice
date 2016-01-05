@@ -55,6 +55,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../../boost</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -84,7 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ElAbstractProtocol.h" />
-    <ClInclude Include="ElProtocol.h" />
+    <ClInclude Include="ElChipDevice.h" />
+    <ClInclude Include="ElMcDevice.h" />
     <ClInclude Include="ElProtoProcessPacket.h" />
     <ClInclude Include="ElSimpleWinComPort.h" />
     <ClInclude Include="ElXDevice.h" />
@@ -92,7 +94,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ElProtocol.cpp" />
+    <ClCompile Include="ElChipDevice.cpp" />
+    <ClCompile Include="ElMcDevice.cpp" />
     <ClCompile Include="ElSimpleWinComPort.cpp" />
     <ClCompile Include="ElXDevice.cpp" />
     <ClCompile Include="stdafx.cpp">
