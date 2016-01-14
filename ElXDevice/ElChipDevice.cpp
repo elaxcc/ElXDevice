@@ -8,18 +8,21 @@
 ElChipDevice::ElChipDevice() : ElXDevice()
 {
 	ResizeBuffer(512);
+	cmd_data_ = NULL;
 	ReInitParse();
 }
 
 ElChipDevice::ElChipDevice(int BufferSize) : ElXDevice()
 {
 	ResizeBuffer(512);
+	cmd_data_ = NULL;
 	ReInitParse();
 }
 
 ElChipDevice::ElChipDevice(std::string _PortName, int _BaudRate, int BufferSize) : ElXDevice(_PortName, _BaudRate)
 {
 	ResizeBuffer(512);
+	cmd_data_ = NULL;
 	ReInitParse();
 }
 
